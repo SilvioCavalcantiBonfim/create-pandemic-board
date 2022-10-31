@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import CardBoard from './CardProjectBoard';
+import EditMenu from './Edit';
+import NavMenu from './Nav';
 
 function App() {
+  const [project, setProject] = useState(null);
+  const [Theme, setTheme] = useState(0);
+
+  const contrastHandle = (event)=>{
+    setTheme((v) => {return 1-v});
+}
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavMenu contrastHandle={contrastHandle} theme={['dark', 'light'][Theme]}/>
+      <EditMenu theme={['secondary', 'success'][Theme]}/>
+      <div style={{display: 'flex'}}><CardBoard title='Pandemia Brasil' theme={Theme}/>
+      <CardBoard title='Pandemia Brasil' theme={Theme}/>
+      <CardBoard title='Pandemia Brasil' theme={Theme}/>
+      <CardBoard title='Pandemia Brasil' theme={Theme}/></div>
     </div>
   );
 }
