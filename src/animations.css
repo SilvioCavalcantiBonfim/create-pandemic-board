@@ -1,0 +1,44 @@
+@keyframes border-dance {
+    to {
+        background-position: left top, right bottom, left bottom, right top;
+    }
+
+    from {
+        background-position: left 15px top, right 15px bottom, left bottom 15px, right top 15px;
+    }
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(0deg);
+    }
+
+    from {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(30deg);
+    }
+
+    75% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes expand {
+    0% {
+    }
+    100% {
+    }
+}

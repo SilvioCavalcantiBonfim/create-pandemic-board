@@ -18,4 +18,21 @@ code {
   -o-transition: all .3s ease;
   transition: all .3s ease;
   animation-delay: .3s;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.dropdown-toggle::before, 
+.dropdown-toggle::after {
+    border: none !important;
+    content: none !important;
+}
+
+button{
+  border-radius: 0px !important;
+}
+
+.editMenu svg{
+  width: 28px;
+  height: 28px;
 }

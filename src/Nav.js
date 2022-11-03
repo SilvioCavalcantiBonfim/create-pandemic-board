@@ -10,12 +10,12 @@ import './Nav.css';
 const NavMenu = (props) => {
 
     return (<>
-        <Navbar variant={props.theme} bg={props.theme} sticky="top">
+        <Navbar variant={['dark', 'light'][props.theme]} bg={['secondary', 'light'][props.theme]}>
             <Container>
                 <Navbar.Brand href="#" className="title"> 
                     <VIRUS/><div>Pandemic Create Board</div>
                 </Navbar.Brand>
-                <Button variant={props.theme} onClick={props.contrastHandle}><CONTRAST/></Button>
+                <Button variant={['secondary', 'light'][props.theme]} onClick={props.contrastHandle}><CONTRAST/></Button>
             </Container>
         </Navbar>
     </>);

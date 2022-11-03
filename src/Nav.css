@@ -10,13 +10,3 @@
 .title svg {
     animation: rotate 10s linear infinite;
 }
-
-@keyframes rotate {
-    to {
-        transform: rotate(0deg);
-    }
-
-    from {
-        transform: rotate(360deg);
-    }
-}
