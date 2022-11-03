@@ -11,7 +11,7 @@ import Color from "color";
 
 const EditMenu = (props) => {
     return (<>
-        <Navbar bg={['dark', 'success'][props.theme]} sticky="top" className="editMenu">
+        <Navbar bg={['dark', 'success'][props.theme]} className="editMenu">
             <Container>
                 <div className="d-flex">
                     <ButtonGroup>

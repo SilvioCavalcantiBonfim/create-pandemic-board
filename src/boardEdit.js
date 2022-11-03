@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import './boardEdit.css';
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Form, Navbar } from "react-bootstrap";
 import teste from './icons/Tabuleiro.png';
 import { ReactComponent as SYRINGE } from './icons/syringe.svg';
 import { ReactComponent as FLASK } from './icons/flask.svg';
@@ -14,7 +14,6 @@ const BoardEdit = (props) => {
 
     useEffect(() => {
         let localBoardRef = null;
-
         if (boardRef.current)
             localBoardRef = boardRef.current;
 
@@ -24,26 +23,36 @@ const BoardEdit = (props) => {
         }
 
         localBoardRef.addEventListener('mousemove', handleOnMouseMove);
-        return () => localBoardRef.removeEventListener('mousemove', handleOnMouseMove);
-    }, [props]);
+        return () => {
+            localBoardRef.removeEventListener('mousemove', handleOnMouseMove);
+        }
+    }, [props, selectedProperties]);
     return <Container className="d-flex" fluid="md">
-        <Row className="justify-content-md-center w-100">
-            <Col xs sm="9">
-                <div className={"h-100 mt-2 active-animation-running map " + ["bg-dark", "bg-white"][props.theme]} ref={boardRef}>
-                    <img src={teste} alt='Board' className="w-100 h-100" />
-                    {props.project.illnessBox.map((e, i) => {
-                        return <Illness coords={coords} key={i} id={i} IllnessBoardSet={props.setProject} setselectedProperties={setselectedProperties} project={props.project} />
-                    })}
-
-                </div>
-            </Col>
-            <Col xs sm="3">
-                <div className={"properties d-flex border-radius py-2 px-3 mt-2 bg-" + ['dark', 'white'][props.theme]}>
-                    <input type='color' value={(selectedProperties !== null) ?props.project[selectedProperties[0]][selectedProperties[1]].color: '#ffffff'} />
-                </div>
-            </Col>
-        </Row>
+        <div className={"w-100 mt-2 active-animation-running map " + ["bg-dark", "bg-white"][props.theme]} ref={boardRef}>
+            <Navbar sticky="top">
+                <Form.Control type='color' className='pl-2 border-0 p-0 m-0' value={(selectedProperties !== null) ? props.project[selectedProperties[0]][selectedProperties[1]].color : '#ffffff'}
+                    onChange={(event) => {
+                        if (selectedProperties !== null)
+                            props.setProject(v => {
+                                v[selectedProperties[0]][selectedProperties[1]].color = event.target.value;
+                                return v;
+                            });
+                    }}
+                />
+            </Navbar>
+            <img src={teste} alt='Board' className="w-100 h-100" />
+            {props.project.illnessBox.map((e, i) => {
+                return <Illness coords={coords} key={i} id={i} IllnessBoardSet={props.setProject} setselectedProperties={setselectedProperties} project={props.project} />
+            })}
+        </div>
     </Container>
+}
+
+const Properties = (props) => {
+    return <div className={"properties d-flex border-radius py-2 px-3 mt-2 bg-" + ['dark', 'white'][props.theme]}>
+        <Form.Control type='color' value={(props.selectedProperties !== null) ? props.project[props.selectedProperties[0]][props.selectedProperties[1]].color : '#ffffff'}
+        />
+    </div>
 }
 
 const Illness = (props) => {
