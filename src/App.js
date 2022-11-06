@@ -1,8 +1,8 @@
 import { useState} from 'react';
 import './App.css';
 import EditMenu from './Edit';
-import NavMenu from './Nav';
 import BoardEdit from './boardEdit';
+import NavMenu from './Header';
 
 function App() {
 
@@ -21,13 +21,11 @@ function App() {
     setTheme((v) => { localStorage.setItem("theme", 1 - v); return 1 - v; });
   }
 
-  document.body.classList.add(['bg-secondary', 'bg-light'][Theme]);
-  document.body.classList.remove(['bg-secondary', 'bg-light'][1 - Theme]);
   return (
     <div className="App">
-      <NavMenu contrastHandle={contrastHandle} theme={Theme} />
-      <EditMenu theme={Theme} setProject={setProject}/>
-      <BoardEdit theme={Theme} project={project} setProject={setProject}/>
+      <NavMenu/>
+      {/* <EditMenu theme={Theme} setProject={setProject} contrastHandle={contrastHandle}/> */}
+      {/* <BoardEdit theme={Theme} project={project} setProject={setProject}/> */}
     </div>
   );
 }

@@ -5,3 +5,12 @@
 .dropdown__conteiner {
     display: flex !important;
 }
+.Brand {
+    display: flex;
+}
+
+.Brand div {
+    line-height: 100%;
+    margin-left: 5px;
+    color: white !important;
+}

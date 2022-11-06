@@ -1,0 +1,69 @@
+@import 'Variables';
+@import 'Mixin';
+@import 'Animations';
+@import 'Function';
+
+.Header{
+    width: 100%;
+    min-height: $min-height;
+    background-color: apply-opacity($color-1, 65%);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    display: flex;
+    justify-content: space-evenly;
+    backdrop-filter: blur(4px);
+    border: none;
+    animation: blur 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+.Header div:nth-child(1){
+    min-height: $min-height;
+    display: flex;
+    justify-content: flex-start;
+}
+.Header div:nth-child(1) div:nth-child(1){
+    height: $min-height;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.Header div:nth-child(1) div:nth-child(1) svg{
+    width: $min-height/2;
+    height: $min-height/2;
+    margin-top: $min-height/4;
+    color: $header-color;
+}
+
+.Header div:nth-child(1) div:nth-child(1) svg{
+    animation: rotate 15s linear infinite;
+}
+
+.Header div:nth-child(1) div:nth-child(2){
+    height: $min-height/3;
+    text-align: center;
+    font-weight: lighter;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-size: $min-height/3;
+    margin-top: $min-height/3 - 5px;
+    color: $header-color;
+    text-overflow: clip;
+    margin-left: 5px;
+}
+
+.Header div:nth-child(2) button{
+    background-color: transparent;
+    color: $header-color;
+    border: none;
+    cursor: pointer;
+    width: $min-height;
+    height: $min-height;
+    &:hover{
+        background-color: apply-opacity($color-1,40%);
+        border-color: white;
+        transition: background-color .5s;
+    }
+}
+
+.Header div:nth-child(2) button svg{
+    width: $min-height/2;
+    height: $min-height/2;
+}
