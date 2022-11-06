@@ -5,7 +5,7 @@ import { ReactComponent as DOWNLOAD } from './icons/download.svg';
 import { ReactComponent as UPLOADMAP } from './icons/upload-map.svg';
 
 const EditBar = (props) => {
-
+    
     const inputFileMap = useRef(null);
 
     const handleName = (event) => {
@@ -31,7 +31,6 @@ const EditBar = (props) => {
         img.readAsDataURL(event.target.files[0]);
         event.target.value = null;
         img.onload = () => {
-            console.log(img.result);
             props.setProject((v) => {
                 let newV = v;
                 newV.boardBackground = img.result;
@@ -39,8 +38,6 @@ const EditBar = (props) => {
             });
         }
     }
-
-    console.log(props.project);
     return (<div className="EditBar">
         <div>
             <input defaultValue={props.project.name} onChange={handleName} />
