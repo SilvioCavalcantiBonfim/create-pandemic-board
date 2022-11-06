@@ -1,0 +1,58 @@
+@import 'Variables';
+@import 'Mixin';
+
+.EditBar{
+    background-color: white;
+    width: 100% !important;
+    height: 60px !important;
+    display: flex;
+    justify-content: space-between;
+    @include shadow();
+}
+.EditBar>div{
+    height: 60px;
+}
+.EditBar>div:nth-child(1){
+    display: flex;
+}
+.EditBar>div:nth-child(1)>input{
+    color: $color-1;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-size: calc($min-height / 4);
+    width: auto;
+    height: 20px;
+    border: none;
+    padding: 20px;
+    text-overflow: ellipsis;
+}
+.EditBar>div:nth-child(2){
+    display: flex;
+    margin-right: 20px;
+    justify-content: end;
+}
+.EditBar>div:nth-child(2)>button{
+    color: $color-1;
+    border: none;
+    height: 60px;
+    cursor: pointer;
+    background-color: white;
+    aspect-ratio: 1 / 1;
+    &:hover{
+        background-color: $bg-color;
+        transition: background-color .5s;
+    }
+}
+
+.EditBar>div:nth-child(2)>div{
+    width: 1px;
+    background-color: $color-1;
+    margin-top: 4.5px;
+    margin-left: 9.75px;
+    margin-right: 9.75px;
+    height: 50px;
+}
+
+.EditBar>div:nth-child(2)>input[type=file] {
+    display: none;
+}

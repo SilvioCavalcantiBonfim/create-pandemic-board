@@ -1,11 +1,16 @@
+@use "sass:math";
+
 $color-1: #353941;
 $color-2: #26282B;
 $color-3: #5F85DBFF; 
 $color-4: #90B8F8;
 
-$bg-color: #fff;
+$bg-color: #f2f2f2;
 $header-color: #ffffff;
 
-$aspect-ratio: 16 / 9;
+$aspect-ratio: math.div(16,9);
 
 $min-height: 60px;
+
+$edit-bar-width: 60%;
+$edit-bar-min-height: 0px;

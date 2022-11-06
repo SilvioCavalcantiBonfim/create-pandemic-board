@@ -1,5 +1,8 @@
 @import 'Mixin';
 @import 'Header';
+@import 'Variables';
+@import 'EditBar';
+@import 'BodyEdit';
 
 body {
     margin: 0;
@@ -8,8 +11,9 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #F5F5F5;
-    background-image: url('https://image.shutterstock.com/image-vector/example-red-square-grunge-stamp-260nw-327662909.jpg');
+    background-color: $bg-color;
+    animation: blur 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    // background-image: url('https://image.shutterstock.com/image-vector/example-red-square-grunge-stamp-260nw-327662909.jpg');
     // background-color: rgba(var(--bs-success-rgb), 0.2) !important;
 }
 
@@ -20,4 +24,22 @@ code {
 
 * {
     @include User-Select(none);
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+.vl {
+    width: 1px;
+    /* Line width */
+    background-color: black;
+    /* Line color */
+    height: 50%;
+    /* Override in-line if you want specific height. */
+    float: left;
+    /* Causes the line to float to left of content. 
+        You can instead use position:absolute or display:inline-block
+        if this fits better with your design */
 }

@@ -1,0 +1,53 @@
+@import 'Mixin';
+
+.BodyEdit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 10px;
+    // background-color: #2196F3;
+    padding: 10px;
+}
+
+.BodyEdit>div {
+    text-align: center;
+    font-size: 30px;
+}
+
+.BodyEdit>div:nth-child(1){
+    min-width: 600px;
+    height: 70vh;
+}
+.menu {
+    width: calc(20vw - 10px);
+    background-color: white;
+    min-width: 250px;
+    @include shadow();
+}
+.miniatureBoard{
+    width: 100%;
+    aspect-ratio: 895 / 456.7;
+    background-color: white;
+    @include shadow();
+    margin-top: 10px;
+    position: relative;
+    cursor: crosshair;
+}
+
+.dimension{
+    width: min-content;
+    backdrop-filter: blur(0px);
+    background-color: apply-opacity($color-2, 0%);
+    color: apply-opacity(white, 0%);
+    padding: 8px;
+    font-size: calc($min-height / 4);
+    position: absolute;
+    right: 0;
+}
+
+.miniatureBoard:hover .dimension{
+    background-color: apply-opacity($color-2, 50%);
+    color: apply-opacity(white, 100%);
+    backdrop-filter: blur(5px);
+    transition: background-color .5s, color .5s, backdrop-filter .5s;
+}
