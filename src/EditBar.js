@@ -1,57 +1,76 @@
-import React, { useRef } from "react";
+import React from "react";
 import { ReactComponent as ADDLOCATION } from './icons/add-location.svg';
 import { ReactComponent as ADDROUTE } from './icons/add-route.svg';
 import { ReactComponent as DOWNLOAD } from './icons/download.svg';
 import { ReactComponent as UPLOADMAP } from './icons/upload-map.svg';
 
-const EditBar = (props) => {
-    
-    const inputFileMap = useRef(null);
+class EditBar extends React.Component {
 
-    const handleName = (event) => {
-        props.setProject(v => {
+    handleName = (event) => {
+        this.props.setProject(v => {
             let newV = v;
             newV.name = event.target.value;
             return newV;
         });
     }
 
-    const HandleExport = () => {
-        const blob = new Blob([JSON.stringify(props.project, null, 2)], { type: "application/json" });
-        const href = URL.createObjectURL(blob);
-
-        const link = document.createElement('a');  
-        link.href = href;
-        link.download = `${props.project.name.replaceAll(' ', '_')}.json`;
-        link.click();
-    }
-
-    const HandleUploadImage = (event) => {
+    HandleUploadImage = (event) => {
         let img = new FileReader();
         img.readAsDataURL(event.target.files[0]);
         event.target.value = null;
         img.onload = () => {
-            props.setProject((v) => {
+            this.props.setProject((v) => {
                 let newV = v;
                 newV.boardBackground = img.result;
                 return newV;
             });
         }
     }
-    return (<div className="EditBar">
-        <div>
-            <input defaultValue={props.project.name} onChange={handleName} />
-        </div>
-        <div>
-            <input type="file" ref={inputFileMap} accept="image/*" title="Upload Map" onChange={HandleUploadImage}></input>
-            <button title="Upload Map" onClick={(event) => {inputFileMap.current.click();}}><UPLOADMAP /></button>
-            <div/>
-            <button title="New City"><ADDLOCATION /></button>
-            <button title="New Route"><ADDROUTE /></button>
-            <div/>
-            <button title="Export Project" onClick={HandleExport}><DOWNLOAD /></button>
-        </div>
-    </div>);
+
+    HandleExport = () => {
+        const blob = new Blob([JSON.stringify(this.props.project, null, 2)], { type: "application/json" });
+        const href = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.download = `${this.props.project.name.replaceAll(' ', '_')}.json`;
+        link.click();
+    }
+
+    HandleCity = (event) => {
+        this.props.setProject(v => {
+            let newV = v;
+            newV._system.action = (v._system.action === 1)? 0: 1;
+            return newV;
+        });
+    }
+
+    HandleRoutes = (event) => {
+        this.props.setProject(v => {
+            let newV = v;
+            newV._system.action = (v._system.action === 2)? 0: 2;
+            return newV;
+        });
+    }
+
+    render() {
+        return (
+            <div className="EditBar">
+                <div>
+                    <input defaultValue={this.props.project.name} onChange={this.handleName} />
+                </div>
+                <div>
+                    <input type="file" id="uploadImage" accept="image/*" title="Upload Map" onChange={this.HandleUploadImage}></input>
+                    <button title="Upload Map" onClick={(event) => { document.getElementById('uploadImage').click(); }}><UPLOADMAP /></button>
+                    <div />
+                    <button title="New City" className={"state_"+Number(this.props.project._system.action === 1)} onClick={this.HandleCity}><ADDLOCATION /></button>
+                    <button title="New Route" className={"state_"+Number(this.props.project._system.action === 2)} onClick={this.HandleRoutes}><ADDROUTE /></button>
+                    <div />
+                    <button title="Export Project" onClick={this.HandleExport}><DOWNLOAD /></button>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default EditBar;

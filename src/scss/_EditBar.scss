@@ -25,7 +25,9 @@
     border: none;
     padding: 20px;
     text-overflow: ellipsis;
+    padding-right: 0px;
 }
+
 .EditBar>div:nth-child(2){
     display: flex;
     margin-right: 20px;
@@ -55,4 +57,14 @@
 
 .EditBar>div:nth-child(2)>input[type=file] {
     display: none;
+}
+
+.state_1{
+    background-color: $color-1 !important;
+    color: white !important;
+}
+
+.state_2{
+    background-color: $color-1 !important;
+    color: white !important;
 }
