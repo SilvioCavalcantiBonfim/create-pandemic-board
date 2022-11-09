@@ -44,21 +44,25 @@
     position: absolute;
     opacity: 0%;
 }
-.illness__conteiner button{
+.illness__button{
     position: relative;
-    aspect-ratio: 1 / 1;
-    margin-top: 15px;
-    margin-left: 15px;
+    margin-top: 13.5px;
+    margin-left: 13.5px;
     color: white;
+    width: 40px;
     height: 40px;
-    border: none;
+    border: solid 4px;
     border-radius: 50%;
     cursor: pointer;
 }
-.illness__svg, .illness__icon__virus{
-    width: 28px;
-    height: 28px;
-    margin-top: 4px !important;
+.illness__svg{
+    position: absolute;
+    left: 1px;
+    top: 0;
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0px !important;
+    margin-top: 1px !important;
 }
 
 .illness__conteiner:hover .illness__icon__virus{
@@ -108,6 +112,7 @@
     color: $m3--sys--light--primary;
     width: 70px;
     height: calc(100% - 1px);
+    border: none;
     margin-top: 1px;
     border-top-right-radius: 16px;
     border-bottom-right-radius: 16px;

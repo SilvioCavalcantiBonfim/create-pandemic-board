@@ -1,3 +1,4 @@
+import Color from "color";
 import React from "react";
 import EditBar from './EditBar';
 import { ReactComponent as CITY } from './icons/city.svg';
@@ -10,7 +11,9 @@ class BodyEdit extends React.Component {
         boardBackground: '',
         cities: [],
         routes: [],
-        illness: [],
+        illness: [...new Array(4)].map((e,i) => {
+            return {name: `illness ${i}`, type: i, color: new Color(`hsl(${Math.floor(Math.random() * 360)},80%,75%)`).hex().toString()};
+        }),
         sizeBoard: [1083, 742],
         colorRoutes: 'black',
         widthRoutes: 2,
@@ -44,7 +47,7 @@ class BodyEdit extends React.Component {
                 let auxS = s;
                 let rect = event.target.getBoundingClientRect();
                 let hue = Math.floor(Math.random() * 360);
-                auxS.cities = s.cities.concat([{ x: event.clientX - rect.left - 12, y: event.clientY - rect.top - 24, color: "hsl(" + hue + ",80%,75%)", stroke: "hsl(" + hue + ",54%, 37%)" }]);
+                auxS.cities = s.cities.concat([{ x: event.clientX - rect.left - 12, y: event.clientY - rect.top - 24, color: "hsl(" + hue + ",80%,75%)", stroke: "hsl(" + hue + ",54%, 37%)" }]);//-[0,26,12]
                 return auxS;
             });
         } else if (this.state._system.action === 2) {
@@ -89,7 +92,7 @@ class BodyEdit extends React.Component {
                 </div>
             </div>
             <div className="grid3">
-                <Properties/>
+                <Properties project={this.state} setProject={this.handleUpdateProject}/>
             </div>
         </div>);
     }
