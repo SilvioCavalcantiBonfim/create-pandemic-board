@@ -35,6 +35,50 @@
     display: flex;
 }
 
+.button__group__capsule select{
+    border: none;
+    margin-left: 10px;
+    text-transform: capitalize;
+    height: 30px;
+    margin-top: 15px;
+    color: $m3--sys--light--primary;
+    padding-right: 12px;
+    padding-left: 12px;
+    outline: none;
+    border: 2px solid $m3--sys--light--primary;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.button__group__capsule option{
+    background-color: $m3--surfaces--light--surface3;
+}
+.button__group__conteiner label{
+    background-color: transparent;
+    font-weight: lighter;
+    color: $m3--sys--light--primary;
+    font-size: $m3--body--large;
+    text-transform: uppercase;
+    margin-top: 18px;
+    height: 30px;
+    margin-left: 10px;
+}
+.button__group__conteiner input[type="number"]{
+    border: none;
+    margin-left: 10px;
+    text-transform: capitalize;
+    height: 30px;
+    margin-top: 13px;
+    padding: 0;
+    color: $m3--sys--light--primary;
+    padding-right: 12px;
+    padding-left: 12px;
+    outline: none;
+    border: 2px solid $m3--sys--light--primary;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30px;
+}
+
 .button__group__conteiner button{
     width: 40px;
     height: 40px;
@@ -50,6 +94,14 @@
         @include shadow($m3---elevation--light--4);
         animation: jelli 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     }
+}
+.button__group__conteiner button input[type="color"]{
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    opacity: 0%;
+    bottom: 0;
+    z-index: -1;
 }
 
 input[type="file"]{

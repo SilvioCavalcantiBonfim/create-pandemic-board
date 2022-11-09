@@ -5,6 +5,7 @@ import { ReactComponent as PARASITE } from './icons/parasite.svg';
 import { ReactComponent as PROTOZOAN } from './icons/protozoan.svg';
 import { ReactComponent as DELETE } from './icons/delete.svg';
 import Color from "color";
+import DarkenColor from "./toolkit";
 
 /*
 {
@@ -26,13 +27,6 @@ class Properties extends React.Component {
 
 class Illness extends React.Component {
     render() {
-
-        const DarkenColor = (color, intence) => {
-            let CurrentColor = new Color(color).rgb(); 
-            return (intence === 0)?'#FFFFFF':new Color(CurrentColor.color.map(e => e/intence)).hex().toString();
-        }
-
-
         return (<div className="illness__conteiner">
             <div style={{ display: 'flex' }}>
                 <div>
