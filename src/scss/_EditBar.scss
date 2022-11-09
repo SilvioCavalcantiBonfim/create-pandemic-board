@@ -1,70 +1,67 @@
 @import 'Variables';
 @import 'Mixin';
 
-.EditBar{
-    background-color: white;
-    width: 100% !important;
+.EditBar {
+    background-color: $m3--sys--light--secondary-container;
+    width: calc(100% - 16px);
     height: 60px !important;
+    position: relative;
     display: flex;
     justify-content: space-between;
-    @include shadow();
-}
-.EditBar>div{
-    height: 60px;
-}
-.EditBar>div:nth-child(1){
-    display: flex;
-}
-.EditBar>div:nth-child(1)>input{
-    color: $color-1;
-    font-weight: lighter;
-    text-transform: uppercase;
-    font-size: calc($min-height / 4);
-    width: auto;
-    height: 20px;
-    border: none;
-    padding: 20px;
-    text-overflow: ellipsis;
-    padding-right: 0px;
+    padding: 0px 8px 0px 8px;
+    
+    @include shadow($m3---elevation--light--2);
 }
 
-.EditBar>div:nth-child(2){
-    display: flex;
-    margin-right: 20px;
-    justify-content: end;
-}
-.EditBar>div:nth-child(2)>button{
-    color: $color-1;
-    border: none;
-    height: 60px;
-    cursor: pointer;
-    background-color: white;
-    aspect-ratio: 1 / 1;
-    &:hover{
-        background-color: $bg-color;
-        transition: background-color .5s;
+.name__update{
+    background-color: transparent;
+    font-weight: lighter;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    border-radius: 4px;
+    border-color: transparent;
+    color: $m3--sys--light--primary;
+    margin-top: 12px;
+    border-width: 2px;
+    padding: 8px 0px 8px 16px;
+    font-size: $m3--body--large;
+    outline: none;
+    &:focus{
+        border-color: $m3--sys--light--outline;
     }
 }
 
-.EditBar>div:nth-child(2)>div{
-    width: 1px;
-    background-color: $color-1;
-    margin-top: 4.5px;
-    margin-left: 9.75px;
-    margin-right: 9.75px;
-    height: 50px;
+.button__group__conteiner{
+    display: flex;
 }
 
-.EditBar>div:nth-child(2)>input[type=file] {
+.button__group__conteiner button{
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    @include shadow($m3---elevation--light--2);
+    border-radius: 12px;
+    color: $m3--sys--light--on-primary-container;
+    background-color:$m3--surfaces--light--surface3;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    &:hover{
+        @include shadow($m3---elevation--light--4);
+        animation: jelli 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    }
+}
+
+input[type="file"]{
     display: none;
 }
 
-.state_1{
-    background-color: $color-1 !important;
+.state_1 {
+    background-color: $m3--sys--light--primary !important;
     color: white !important;
 }
 
-.state_2{
-    background-color: $color-1 !important;
+.state_2 {
+    background-color: $m3--sys--light--primary !important;
     color: white !important;
 }

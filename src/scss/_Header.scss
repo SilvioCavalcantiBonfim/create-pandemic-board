@@ -6,11 +6,11 @@
 .Header{
     width: 100%;
     min-height: $min-height;
-    background-color: apply-opacity($color-1, 100%);
-    @include shadow();
+    background-color: $m3--sys--light--primary;
     display: flex;
     backdrop-filter: blur(4px);
     border: none;
+    @include shadow($m3---elevation--light--2);
 }
 .Header div:nth-child(1){
     min-height: $min-height;

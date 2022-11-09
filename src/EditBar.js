@@ -57,12 +57,11 @@ class EditBar extends React.Component {
         return (
             <div className="EditBar">
                 <div>
-                    <input defaultValue={this.props.project.name} onChange={this.handleName} />
+                    <span className="name__conteiner"><input defaultValue={this.props.project.name} onChange={this.handleName} className='name__update'/></span>
                 </div>
-                <div>
+                <div className="button__group__conteiner">
                     <input type="file" id="uploadImage" accept="image/*" title="Upload Map" onChange={this.HandleUploadImage}></input>
                     <button title="Upload Map" onClick={(event) => { document.getElementById('uploadImage').click(); }}><UPLOADMAP /></button>
-                    <div />
                     <button title="New City" className={"state_"+Number(this.props.project._system.action === 1)} onClick={this.HandleCity}><ADDLOCATION /></button>
                     <button title="New Route" className={"state_"+Number(this.props.project._system.action === 2)} onClick={this.HandleRoutes}><ADDROUTE /></button>
                     <div />

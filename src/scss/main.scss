@@ -3,6 +3,8 @@
 @import 'Variables';
 @import 'EditBar';
 @import 'BodyEdit';
+@import 'Menu';
+
 
 body {
     margin: 0;
@@ -11,7 +13,7 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: $bg-color;
+    background-color: $m3--sys--light--background;
     animation: blur 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
     // background-image: url('https://image.shutterstock.com/image-vector/example-red-square-grunge-stamp-260nw-327662909.jpg');
     // background-color: rgba(var(--bs-success-rgb), 0.2) !important;
@@ -26,12 +28,7 @@ code {
     @include User-Select(none);
 }
 
-textarea:focus,
-input:focus {
-    outline: none;
-}
-
-.App{
+.App {
     display: flex;
     flex-direction: column;
     justify-content: center;
